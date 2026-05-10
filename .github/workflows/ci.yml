@@ -5,24 +5,25 @@ on:
     branches:
       - main
 
-jobs: 
-   build:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
-        - name: Say Hello
-          run: echo "Hello from CI! Code pushes successfully!"
-        - name: List files
-          run: ls -la
-        - name: Check git log
-          run: git log --oneline -5
-        - name: Run a test
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Say Hello
+        run: echo "Hello from CI!"
+
+      - name: List files
+        run: ls -la
+
+      - name: Run a test
         run: |
           echo "Running tests..."
           if [ -f thisdoesnotexist.md ]; then
-            echo "File exists! ✅"
+            echo "File exists!"
           else
-            echo "File missing! ❌"
+            echo "File missing!"
             exit 1
           fi
