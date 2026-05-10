@@ -10,10 +10,19 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Checkout code
-          uses: actions/checkout@v3
+          uses: actions/checkout@v4
         - name: Say Hello
           run: echo "Hello from CI! Code pushes successfully!"
         - name: List files
           run: ls -la
         - name: Check git log
           run: git log --oneline -5
+        - name: Run a test
+          run: |
+            echo "Running tests..."
+            if [ -f README.md ]; then
+              echo "README.md exists!"
+            else
+              echo "README.md missing"
+              exit 1
+            fi
