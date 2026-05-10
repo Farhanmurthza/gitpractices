@@ -21,9 +21,10 @@ jobs:
       - name: Run a test
         run: |
           echo "Running tests..."
-          if [ -f thisdoesnotexist.md ]; then
-            echo "File exists!"
+          if [ -f README.md ]; then
+            echo "README.md exists!"
+            exit 0
           else
-            echo "File missing!"
+            echo "README.md missing!"
             exit 1
           fi
